@@ -1,0 +1,15 @@
+de.jannlab
+de.jannlab.core
+de.jannlab.data
+de.jannlab.exception
+de.jannlab.generator
+de.jannlab.generator.exception
+de.jannlab.io
+de.jannlab.math
+de.jannlab.misc
+de.jannlab.optimization
+de.jannlab.optimization.diffevo
+de.jannlab.optimization.exception
+de.jannlab.tools
+de.jannlab.training
+de.jannlab.training.exception
