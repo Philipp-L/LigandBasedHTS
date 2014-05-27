@@ -11,6 +11,7 @@ import javax.imageio.IIOException;
 import javax.swing.text.StyledEditorKit.ItalicAction;
 
 import de.jannlab.data.Sample;
+import de.jannlab.data.SampleSet;
 import tools.CustomIO;
 
 /**
@@ -42,7 +43,7 @@ public class ECFPReader {
 	 * Extrahiert aus den ECFP's die SPARSE_TARGET_SIZE häufigten Features
 	 * @return Binärvektor welcher die Anweseneheit des Features markiert.
 	 */
-	public ArrayList<Sample> generateUnsparseSamples(){
+	public SampleSet generateUnsparseSamples(){
 		int[] counts = countSamples();
 
 		int[] finalFeatures = new int[SPARSE_TARGET_SIZE];
@@ -61,12 +62,11 @@ public class ECFPReader {
 				counts[currentIndex] = 0;
 			}
 		}
-
 		return generateUnsparseSamples(finalFeatures);
 	}
 //TODO
-	private ArrayList<Sample> generateUnsparseSamples(int[] features){
-		ArrayList<Sample> sampleList = new ArrayList<>();
+	private SampleSet generateUnsparseSamples(int[] features){
+		SampleSet sampleList = new SampleSet();
 
 		inputReader.resetReader();
 		while(inputReader.isReady()){
@@ -79,10 +79,9 @@ public class ECFPReader {
 			double target = Double.valueOf(splittedLine[0]); 
 			if(target == -1 ){
 				target = 0;
-			}
+			}			
 			targets[0] = target;
 			double[] featuresOfCurrentLine = extractFeaturesFromLine(splittedLine);
-			
 			for(int i = 0; i < featuresOfCurrentLine.length; i++){
 				double currentFeature = featuresOfCurrentLine[i];
 				for(int j = 0; j < features.length; j++){
@@ -91,7 +90,6 @@ public class ECFPReader {
 					}
 				}
 			}
-
 			sampleList.add(new Sample(inputs, targets));
 
 		}
@@ -101,6 +99,7 @@ public class ECFPReader {
 	private int[] countSamples(){
 		int[] counts = new int[hashSpace];
 
+		
 		while(inputReader.isReady()){
 			String[] currentLine = inputReader.readLine().split(" ");
 			double[] features = extractFeaturesFromLine(currentLine);
@@ -108,8 +107,7 @@ public class ECFPReader {
 				counts[(int) features[i]]++;
 			}
 		}
-		Arrays.sort(counts);
-				
+		
 		return counts; 
 	}
 

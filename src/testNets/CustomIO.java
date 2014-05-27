@@ -1,4 +1,4 @@
-package IO;
+package testNets;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

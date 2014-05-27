@@ -1,6 +1,7 @@
 package testNets;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import de.jannlab.Net;
@@ -39,14 +40,10 @@ public class SigmoidBinomialMultilayerPerceptron {
 	Net mlp;
 	NetLearning learning;
 
-	public SigmoidBinomialMultilayerPerceptron(ArrayList<Sample> samples) {
+	public SigmoidBinomialMultilayerPerceptron(SampleSet set) {
 
-		//generate a SampleSet
-		set = new SampleSet(); 
+		this.set = set;
 		
-		for (Sample currentSample : samples) {
-			set.add(currentSample);
-		}
 		/*
 		int[] idx = new int[set.get(0).input.data.length];
 
@@ -63,8 +60,6 @@ public class SigmoidBinomialMultilayerPerceptron {
 		MLPGenerator gen = new MLPGenerator();
 
 		gen.inputLayer(set.get(0).input.cols); 
-		//gen.hiddenLayer(hiddenCells, CellType.TANH);
-		//gen.outputLayer(1, CellType.TANH);
 
 		gen.hiddenLayer(HIDDEN_CELLS, CellType.TANH);
 		gen.outputLayer(1, CellType.SIGMOID_BINOMIAL, true, 1.0);
@@ -96,7 +91,7 @@ public class SigmoidBinomialMultilayerPerceptron {
 
 	public void startLearning(){
 		learning.learn();
-
+		
 		double rate = EvaluationTools.evaluateClassifcation(mlp, set);
 		System.out.println("Accuracy: " + DoubleTools.asString(rate * 100, 2));
 	}
