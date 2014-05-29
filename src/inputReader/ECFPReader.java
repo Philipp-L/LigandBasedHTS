@@ -1,31 +1,14 @@
 package inputReader;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-
-import javax.imageio.IIOException;
-import javax.swing.text.StyledEditorKit.ItalicAction;
-
+import tools.CustomIO;
 import de.jannlab.data.Sample;
 import de.jannlab.data.SampleSet;
-import tools.CustomIO;
 
 /**
  * @author User
  *
  */
-/**
- * @author User
- *
- */
-/**
- * @author User
- *
- */
+
 public class ECFPReader {
 
 	static final int SPARSE_TARGET_SIZE = 200;
@@ -120,7 +103,6 @@ public class ECFPReader {
 		return features;
 	}
 
-	
 	
 /*
 	public Sample[] generateSamples(){
