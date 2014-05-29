@@ -1,0 +1,5 @@
+All withEPOCHSEpochs 
+ Accuracy,HiddenCells,Epochs,LearningRate,Momentum,WeightDecay
+49.00,100,500,5.0E-5,0.9,0.0
+59.97,100,500,5.0E-5,0.1,0.0
+59.71,100,500,5.0E-5,0.001,0.0
